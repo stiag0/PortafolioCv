@@ -57,15 +57,15 @@ const resume = {
       employer: 'Tigo Colombia',
       city: 'Remote',
       achievements: [
-        `Develop multiple automatitions on microsoft enviroment to resolve 
-        delays operational timelaps using excel macros, power-Query (DAX) 
-        and Power Automate to deploy software whit a dinamic response 
-        compared to a clasic excel usages. deliver quality products and
-        made several on-boarding process to new developers.`,
+        `Develop multiple automations on microsoft environment to resolve 
+        delays operational timelapse using excel macros, power-Query (DAX) 
+        and Power Automate to deploy software with a dynamic response 
+        compared to classic excel usages. deliver quality products and
+        made several on-boarding processes to new developers.`,
         `Mentored team members in development, issues and technical
-        progression.`,
+        Progression.`,
         `Designed a normalyzer to format data-sets as a tool to improve 
-        the consumers data ratio and make it more accessible to operational team.`
+        the consumers data ratio and make it more accessible to the operational team.`
       ],
     },
     {
@@ -95,10 +95,10 @@ const resume = {
       achievements: [
         `Was my first job and become a complete new challenge
         to me but after the training time i become a successful deal closer,
-        ofcourse i was better selling hair dryer, hair straighteners or 
+        of course i was better selling hair dryer, hair straighteners or 
         ellectrodomestics in general, but not let that limit myself and learn
-        alot of oter products and even lern how to 
-        cobine colors to recomend a nail polish or hair dye.`,
+        a lot of other products and even learn how to 
+        combine colors to recommend a nail polish or hair dye.`,
         'Perform a social network integration business.',
       ],
     },
