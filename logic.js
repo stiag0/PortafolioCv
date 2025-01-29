@@ -15,7 +15,7 @@ const resume = {
     {
       school: 'Universidad EAFIT',
       degree: 'Bachelor',
-      graduationDate: '2022',
+      graduationDate: '2024',
       description: 'Software Engineering',
     },
   ],
@@ -30,14 +30,15 @@ const resume = {
     },
   ],
   skills: [
+    'Python',
+    'django',
     'JavaScript',
     'TypeScript',
     'React',
     'Angular',
-    'Firebase',
+    'vue',
     'CSS',
     'Unity',
-    'Python',
     'c++',
     'C#',
     'PostgreSQL',
@@ -50,6 +51,19 @@ const resume = {
     Disciplined, organized, humble and accessible person. Committed to good morals, continuous learning, innovation and development of optimal solutions.
     Great enthusiastic teamwork, considered cautious, assertive, helpful and creative.`,
   employmentHistory: [
+    {
+      jobTitle: 'Full-stack Developer',
+      startDate: 'January 2023',
+      endDate: 'December 2024',
+      employer: 'Central de belleza ©',
+      city: 'Medellín',
+      achievements: [
+        `Developed a responsive website for a local beauty suply center using wordpress and PHP solutions`,
+        `Collaborated with the design team to create a visually appealing and user-friendly website`,
+        `Optimized the website's performance by implementing caching, compression`,
+        `Worked closely with infomation to cleen up the data by creating a database`,
+      ],
+    },
     {
       jobTitle: 'Full-stack Developer',
       startDate: 'August 2021',
@@ -69,9 +83,9 @@ const resume = {
       ],
     },
     {
-      jobTitle: 'Software Developer & CEO',
+      jobTitle: 'Software Developer',
       startDate: 'january 2019',
-      endDate: 'Present',
+      endDate: 'june 2022',
       employer: 'Centraldelbarbero.com',
       city: 'Medellín',
       achievements: [
