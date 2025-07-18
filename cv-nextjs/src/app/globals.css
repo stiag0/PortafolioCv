@@ -1,0 +1,221 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+  }
+
+  * {
+    @apply border-gray-200;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .cv-section {
+    @apply space-y-4 mb-8;
+  }
+
+  .cv-title {
+    @apply text-lg font-bold text-gray-900 dark:text-gray-100 uppercase tracking-wide border-b border-gray-200 dark:border-gray-700 pb-2;
+  }
+
+  .cv-timeline-item {
+    @apply relative border-l-2 border-gray-200 dark:border-gray-700 pl-8 pb-8;
+  }
+
+  .cv-timeline-dot {
+    @apply absolute -left-2 w-4 h-4 bg-gray-900 dark:bg-gray-100 rounded-full;
+  }
+
+  .cv-skill-tag {
+    @apply px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-full text-sm text-gray-700 dark:text-gray-300 text-center;
+  }
+}
+
+/* Print Styles */
+@media print {
+  @page {
+    size: A4;
+    margin: 0.5in;
+  }
+
+  body {
+    @apply text-black bg-white;
+  }
+
+  .print\\:hidden {
+    display: none !important;
+  }
+
+  .print\\:block {
+    display: block !important;
+  }
+
+  .print\\:text-black {
+    color: black !important;
+  }
+
+  .print\\:bg-white {
+    background-color: white !important;
+  }
+
+  .print\\:text-sm {
+    font-size: 0.875rem !important;
+  }
+
+  .print\\:text-xs {
+    font-size: 0.75rem !important;
+  }
+
+  .print\\:mb-2 {
+    margin-bottom: 0.5rem !important;
+  }
+
+  .print\\:p-0 {
+    padding: 0 !important;
+  }
+
+  .print\\:m-0 {
+    margin: 0 !important;
+  }
+
+  .print\\:border-gray-400 {
+    border-color: #9ca3af !important;
+  }
+
+  .print\\:text-gray-700 {
+    color: #374151 !important;
+  }
+
+  .print\\:text-gray-900 {
+    color: #111827 !important;
+  }
+
+  .print\\:bg-gray-100 {
+    background-color: #f3f4f6 !important;
+  }
+
+  /* Ensure proper spacing for print */
+  .container {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  /* Reduce font sizes for print */
+  h1 {
+    font-size: 1.5rem !important;
+  }
+
+  h2 {
+    font-size: 1.25rem !important;
+  }
+
+  h3 {
+    font-size: 1.125rem !important;
+  }
+
+  p, li {
+    font-size: 0.875rem !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Ensure content fits on page */
+  .hero-section {
+    padding: 1rem 0 !important;
+  }
+
+  .sidebar {
+    margin-bottom: 1rem !important;
+  }
+
+  .main-content {
+    margin-top: 0 !important;
+  }
+
+  /* Hide animations for print */
+  * {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+    transition-duration: 0s !important;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400 dark:bg-gray-500;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-fadeInLeft {
+  animation: fadeInLeft 0.6s ease-out;
+}
+
+.animate-fadeInRight {
+  animation: fadeInRight 0.6s ease-out;
+}
