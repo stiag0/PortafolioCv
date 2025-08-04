@@ -61,7 +61,7 @@ export const cvData: CVData = {
     firstName: 'Santiago Ramon',
     lastName: 'Alvarez Gomez',
     jobTitle: 'Full Stack Developer',
-    photo: '',
+    photo: '/santiago-photo.jpg', // Professional headshot
     city: 'Medellin',
     postalCode: '050022',
     country: 'Colombia',
