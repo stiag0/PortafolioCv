@@ -10,7 +10,7 @@ import { CVEducationSection } from '@/components/cv-education-section';
 import { CVLanguagesSection } from '@/components/cv-languages-section';
 import { CVNavigation } from '@/components/cv-navigation';
 import { ThemeToggle } from '@/components/theme-toggle';
-import { PrintButton } from '@/components/print-button';
+import { PrintLayout } from '@/components/print-layout';
 import { cvData } from '@/lib/data';
 
 export default function Home() {
@@ -65,10 +65,9 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-all duration-500">
-      {/* Theme Toggle and Print Button */}
+      {/* Theme Toggle */}
       <div className="fixed top-4 right-4 z-50 flex space-x-2">
         <ThemeToggle />
-        <PrintButton />
       </div>
       
       {/* Desktop Layout - Vue Template Style */}
@@ -132,6 +131,11 @@ export default function Home() {
           activeSection={activeSection} 
           onSectionChange={setActiveSection} 
         />
+      </div>
+
+      {/* Print-Only Layout (Hidden on screen, visible in print/PDF) */}
+      <div className="hidden print:block">
+        <PrintLayout />
       </div>
     </div>
   );

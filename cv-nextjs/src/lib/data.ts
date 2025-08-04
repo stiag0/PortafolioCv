@@ -32,6 +32,19 @@ export interface Employment {
   achievements: string[];
 }
 
+export interface Certification {
+  name: string;
+  issuer: string;
+  date: string;
+}
+
+export interface Project {
+  name: string;
+  description: string;
+  technologies: string[];
+  link?: string;
+}
+
 export interface CVData {
   personalInfo: PersonalInfo;
   education: Education[];
@@ -39,6 +52,8 @@ export interface CVData {
   skills: string[];
   languages: string[];
   employmentHistory: Employment[];
+  certifications?: Certification[];
+  projects?: Project[];
 }
 
 export const cvData: CVData = {
@@ -52,7 +67,7 @@ export const cvData: CVData = {
     country: 'Colombia',
     phone: '+573057668478',
     email: 'stiago4r@gmail.com',
-    professionalSummary: `Full Stack Developer with 2+ years of experience building scalable web applications and mobile solutions. Specialized in React, Angular, and Python/Django with proven track record of delivering high-impact projects including a successful e-commerce app with 5,000+ downloads and $3,000+ revenue. Strong expertise in modern JavaScript frameworks, database design, and agile methodologies. Passionate about clean code, performance optimization, and creating exceptional user experiences.`
+    professionalSummary: `Full Stack Developer with 4+ years of experience building scalable web applications and e-commerce solutions. Specialized in modern JavaScript frameworks (React, Angular, Next.js), Python/Django, and Node.js development. Recent focus on AI integration and headless CMS implementations, including AI-powered e-commerce platforms and custom Shopify solutions. Strong expertise in database design, RESTful APIs, cloud deployment (Vercel, AWS), and agile methodologies. Passionate about clean code, performance optimization, and creating exceptional user experiences. Also experienced in game development with Godot Engine.`
   },
   education: [
     {
@@ -71,36 +86,60 @@ export const cvData: CVData = {
       label: 'LinkedIn',
       link: 'https://www.linkedin.com/in/santiago-alvarez-b6a530233/',
     },
+    {
+      label: 'WhatsApp',
+      link: 'https://wa.me/573057668478',
+    },
   ],
   skills: [
     // Frontend
-    'React', 'Angular', 'Vue.js', 'TypeScript', 'JavaScript (ES6+)', 'HTML5', 'CSS3', 'Tailwind CSS',
+    'React', 'Angular', 'TypeScript', 'JavaScript (ES6+)', 'HTML5', 'CSS3', 'Tailwind CSS', 'Vue.js', 'Next.js', 'Svelte',
     // Backend
-    'Python', 'Django', 'Node.js', 'Express.js', 'RESTful APIs',
+    'Python', 'Node.js', 'Express.js', 'Django', 'FastAPI', 'RESTful APIs', 'GraphQL',
+    // E-commerce & CMS
+    'WordPress (Headless)', 'Shopify', 'WooCommerce', 'Strapi', 'Sanity',
     // Databases
-    'PostgreSQL', 'MongoDB', 'Firebase',
-    // Tools & Platforms
-    'Git', 'GitHub', 'Docker', 'AWS', 'Vercel', 'Netlify',
+    'PostgreSQL', 'MongoDB', 'Firebase', 'MySQL', 'Redis', 'SQLite', 'Supabase', 'PlanetScale',
+    // Cloud & Deployment
+    'Vercel', 'AWS', 'Docker', 'Git', 'GitHub', 'Netlify', 'Railway', 'Heroku',
+    // AI & Machine Learning
+    'Claude CLI', 'ChatGPT API', 'OpenAI API', 'TensorFlow', 'Prompt Engineering', 'AI Integration',
     // Game Development
-    'Unity', 'C#', 'C++',
+    'Godot Engine', 'GDScript', 'Unity', 'C#', 'Blender',
+    // Testing & Tools
+    'Jest', 'Cypress', 'Postman', 'Insomnia', 'Figma', 'Adobe XD',
     // Other
-    'Agile/Scrum', 'JIRA', 'Postman', 'Figma'
+    'Agile/Scrum', 'JIRA', 'Confluence', 'Slack', 'Discord'
   ],
   languages: ['Spanish', 'English'],
   employmentHistory: [
     {
-      jobTitle: 'Full-stack Developer',
+      jobTitle: 'AI Developer & Full Stack Developer',
       startDate: 'January 2023',
-      endDate: 'December 2024',
+      endDate: 'Present',
       employer: 'Central de belleza ©',
       city: 'Medellín',
       achievements: [
-        'Developed a responsive website for a local beauty supply center using WordPress and PHP solutions',
-        'Collaborated with the design team to create a visually appealing and user-friendly website',
-        'Optimized the website\'s performance by implementing caching and compression',
-        'Worked closely with information team to clean up the data by creating a database',
-        'Increased website performance by 40% through optimization',
-        'Built with WordPress, PHP, MySQL, and custom CSS'
+        'Leading full-stack development of e-commerce platform using Python, Node.js, and modern web technologies',
+        'Implementing headless WordPress architecture for centraldebelleza.co with Tailwind CSS on Vercel hybrid deployment',
+        'Developing custom backend logic and API integrations for enhanced e-commerce functionality',
+        'Integrating AI capabilities using Claude CLI, ChatGPT API, and OpenAI API for enhanced user experiences',
+        'Implementing AI-powered features including intelligent product recommendations and automated customer support',
+        'Optimizing website performance and user experience through modern development practices',
+        'Collaborating with design and development teams to create scalable, maintainable solutions'
+      ],
+    },
+    {
+      jobTitle: 'External Developer',
+      startDate: 'March 2025',
+      endDate: 'Present',
+      employer: 'El Mundo de Laura',
+      city: 'Remote',
+      achievements: [
+        'Developed and implemented personalized backend logic for Shopify e-commerce platform',
+        'Created custom solutions to enhance online store functionality and user experience',
+        'Provided technical consultation and development services as external contractor',
+        'Implemented custom features and integrations to meet specific business requirements'
       ],
     },
     {
@@ -153,10 +192,28 @@ export const cvData: CVData = {
   ],
   projects: [
     {
+      name: 'AI-Powered E-commerce Platform',
+      description: 'Enhanced e-commerce platform with AI integration using Claude CLI, ChatGPT API, and OpenAI API for intelligent features',
+      technologies: ['Python', 'Node.js', 'Claude CLI', 'ChatGPT API', 'OpenAI API', 'TensorFlow', 'Vercel'],
+      link: 'https://centraldebelleza.co'
+    },
+    {
+      name: 'El Mundo de Laura Shopify Integration',
+      description: 'Custom backend logic and personalized solutions for Shopify e-commerce platform',
+      technologies: ['Shopify', 'JavaScript', 'Liquid', 'API Integration'],
+      link: 'https://elmundodelaura.com'
+    },
+    {
+      name: 'Godot Engine Projects',
+      description: 'Personal game development projects and learning experiences using Godot Engine and GDScript',
+      technologies: ['Godot Engine', 'GDScript', 'Game Development'],
+      link: 'https://github.com/stiag0'
+    },
+    {
       name: 'E-commerce Mobile App',
       description: 'Built with Angular and Firebase, achieved 5,000+ downloads',
       technologies: ['Angular', 'Firebase', 'TypeScript'],
-      link: 'https://github.com/your-repo'
+      link: 'https://github.com/stiag0'
     }
   ]
 }; 

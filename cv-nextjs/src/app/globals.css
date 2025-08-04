@@ -55,6 +55,16 @@
     @apply text-black bg-white;
   }
 
+  /* Hide the main content when printing, show print layout instead */
+  .min-h-screen > div:not(.print\\:block) {
+    display: none !important;
+  }
+
+  /* Show print layout */
+  .print\\:block {
+    display: block !important;
+  }
+
   .print\\:hidden {
     display: none !important;
   }
@@ -149,6 +159,61 @@
     animation-duration: 0s !important;
     animation-delay: 0s !important;
     transition-duration: 0s !important;
+  }
+
+  /* Print layout specific styles */
+  .print-layout {
+    font-family: 'Times New Roman', serif;
+    line-height: 1.4;
+    color: #000;
+    background: white;
+  }
+
+  .print-layout h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  .print-layout h2 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 6px;
+  }
+
+  .print-layout h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+
+  .print-layout h4 {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 2px;
+  }
+
+  .print-layout p, .print-layout li {
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+
+  .print-layout .experience-item {
+    margin-bottom: 16px;
+    page-break-inside: avoid;
+  }
+
+  .print-layout .skill-item {
+    margin-bottom: 6px;
+  }
+
+  /* Ensure proper page breaks */
+  .print-layout section {
+    page-break-inside: avoid;
+  }
+
+  .print-layout .experience-item {
+    page-break-inside: avoid;
   }
 }
 

@@ -13,7 +13,8 @@ import {
   Moon,
   Sun,
   GraduationCap,
-  Languages
+  Languages,
+  MessageCircle
 } from 'lucide-react';
 import { CVData } from '@/lib/data';
 
@@ -30,14 +31,102 @@ export default function CVSidebar({ cvData, isDarkMode, onToggleTheme, onPrint }
   const socialLinks = [
     { icon: Github, href: cvData.links.find(link => link.label === 'GitHub')?.link, label: 'GitHub' },
     { icon: Linkedin, href: cvData.links.find(link => link.label === 'LinkedIn')?.link, label: 'LinkedIn' },
+    { icon: MessageCircle, href: cvData.links.find(link => link.label === 'WhatsApp')?.link, label: 'WhatsApp' },
     { icon: Globe, href: cvData.links.find(link => link.label === 'Website')?.link, label: 'Website' },
   ].filter(link => link.href);
 
-  // Deterministic skill level calculation to avoid hydration errors
-  const getSkillLevel = (skill: string, index: number) => {
-    const hash = skill.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
-    const level = ((hash + index) % 40) + 60; // Between 60-100%
-    return level;
+  // Skill levels mapping from the skills section
+  const skillLevels: { [key: string]: number } = {
+    // Frontend
+    'React': 90,
+    'Angular': 85,
+    'TypeScript': 90,
+    'JavaScript (ES6+)': 95,
+    'Next.js': 85,
+    'Vue.js': 80,
+    'Tailwind CSS': 90,
+    'Svelte': 75,
+    'HTML5': 85,
+    'CSS3': 85,
+    
+    // Backend
+    'Python': 90,
+    'Node.js': 85,
+    'Django': 85,
+    'Express.js': 80,
+    'FastAPI': 80,
+    'GraphQL': 75,
+    'RESTful APIs': 90,
+    
+    // Database
+    'PostgreSQL': 85,
+    'MongoDB': 80,
+    'MySQL': 80,
+    'Firebase': 85,
+    'SQLite': 75,
+    'Redis': 60,
+    'Supabase': 55,
+    'PlanetScale': 50,
+    
+    // E-commerce & CMS
+    'WordPress (Headless)': 85,
+    'Shopify': 80,
+    'WooCommerce': 75,
+    'Strapi': 55,
+    'Sanity': 50,
+    
+    // Cloud & Deployment
+    'Vercel': 90,
+    'AWS': 80,
+    'Docker': 75,
+    'Git': 90,
+    'GitHub': 90,
+    'Netlify': 60,
+    'Railway': 55,
+    'Heroku': 70,
+    
+    // AI & Machine Learning
+    'Claude CLI': 85,
+    'ChatGPT API': 80,
+    'OpenAI API': 80,
+    'TensorFlow': 75,
+    'Prompt Engineering': 85,
+    'AI Integration': 80,
+    
+    // Testing & Tools
+    'Jest': 75,
+    'Cypress': 70,
+    'Postman': 85,
+    'Insomnia': 55,
+    'Figma': 80,
+    'Adobe XD': 70,
+    
+    // Game Development
+    'Godot Engine': 80,
+    'GDScript': 75,
+    'Unity': 70,
+    'C#': 75,
+    'Blender': 65,
+    
+    // Other
+    'Agile/Scrum': 85,
+    'JIRA': 80,
+    'Confluence': 75,
+    'Slack': 75,
+    'Discord': 75
+  };
+
+  // Get skill level with fallback
+  const getSkillLevel = (skill: string) => {
+    return skillLevels[skill] || 70; // Default to 70% if not found
+  };
+
+  // Get top skills ordered by proficiency
+  const getTopSkills = () => {
+    return cvData.skills
+      .map(skill => ({ name: skill, level: getSkillLevel(skill) }))
+      .sort((a, b) => b.level - a.level) // Sort by decreasing proficiency
+      .slice(0, 6); // Get top 6 skills
   };
 
   return (
@@ -132,8 +221,8 @@ export default function CVSidebar({ cvData, isDarkMode, onToggleTheme, onPrint }
           <h3 className="text-lg font-semibold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
             Skills
           </h3>
-          <div className="space-y-3">
-            {cvData.skills.slice(0, 8).map((skill: string, index: number) => (
+          <div className="space-y-3 max-h-64 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800">
+            {getTopSkills().map((skill, index) => (
               <div 
                 key={index}
                 className="group p-3 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105"
@@ -142,14 +231,14 @@ export default function CVSidebar({ cvData, isDarkMode, onToggleTheme, onPrint }
               >
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors">
-                    {skill}
+                    {skill.name}
                   </span>
                   <div className={`w-2 h-2 rounded-full ${isHovered === `skill-${index}` ? 'bg-gradient-to-r from-yellow-400 to-orange-400 animate-pulse' : 'bg-gradient-to-r from-yellow-400/50 to-orange-400/50'}`}></div>
                 </div>
                 <div className="w-full bg-gray-700/30 rounded-full h-2">
                   <div 
                     className="h-2 rounded-full bg-gradient-to-r from-yellow-400 to-orange-400 transition-all duration-1000"
-                    style={{ width: `${getSkillLevel(skill, index)}%` }}
+                    style={{ width: `${skill.level}%` }}
                   ></div>
                 </div>
               </div>

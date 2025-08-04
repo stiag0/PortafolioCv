@@ -115,7 +115,7 @@ export function CVHero({ personalInfo }: CVHeroProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.0 }}
-            className="flex flex-wrap justify-center gap-4"
+            className="flex flex-wrap justify-center gap-4 print:hidden"
           >
             <a
               href={`mailto:${personalInfo.email}`}
@@ -150,12 +150,12 @@ export function CVHero({ personalInfo }: CVHeroProps) {
             className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto"
           >
             <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-              <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">2+</div>
+              <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">4+</div>
               <div className="text-sm text-gray-600 dark:text-gray-400">Years</div>
             </div>
             
             <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-              <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">15+</div>
+              <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">50+</div>
               <div className="text-sm text-gray-600 dark:text-gray-400">Skills</div>
             </div>
             

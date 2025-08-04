@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, Download } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Download, MessageCircle } from 'lucide-react';
 import { PersonalInfo } from '@/lib/data';
 
 interface CVContactSectionProps {
@@ -87,6 +87,23 @@ export function CVContactSection({ personalInfo }: CVContactSectionProps) {
                 <a
                   href={`tel:${personalInfo.phone}`}
                   className="text-gray-900 dark:text-gray-100 font-medium hover:text-green-600 dark:hover:text-green-400 transition-colors"
+                >
+                  {personalInfo.phone}
+                </a>
+              </div>
+            </div>
+
+            <div className="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+              <div className="flex-shrink-0 w-12 h-12 bg-emerald-600 rounded-full flex items-center justify-center">
+                <MessageCircle className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <p className="text-sm text-gray-600 dark:text-gray-400">WhatsApp</p>
+                <a
+                  href="https://wa.me/573057668478"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-900 dark:text-gray-100 font-medium hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
                 >
                   {personalInfo.phone}
                 </a>
