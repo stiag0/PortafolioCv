@@ -16,6 +16,7 @@ export interface Education {
   degree: string;
   graduationDate: string;
   description: string;
+  certificate?: string; // Optional PDF link
 }
 
 export interface Link {
@@ -75,6 +76,7 @@ export const cvData: CVData = {
       degree: 'Bachelor',
       graduationDate: '2024',
       description: 'Software Engineering',
+      certificate: '/documents/santiago-degree-certificate.pdf', // Add your PDF here
     },
   ],
   links: [

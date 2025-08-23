@@ -1,7 +1,8 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { GraduationCap, Calendar, MapPin, Award } from 'lucide-react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { GraduationCap, Calendar, MapPin, Award, X, FileText } from 'lucide-react';
 import { Education } from '@/lib/data';
 
 interface CVEducationSectionProps {
@@ -9,6 +10,8 @@ interface CVEducationSectionProps {
 }
 
 export function CVEducationSection({ education }: CVEducationSectionProps) {
+  const [selectedCertificate, setSelectedCertificate] = useState<string | null>(null);
+
   const containerVariants = {
     hidden: { opacity: 0, x: 20 },
     visible: {
@@ -24,6 +27,12 @@ export function CVEducationSection({ education }: CVEducationSectionProps) {
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 }
+  };
+
+  const modalVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { opacity: 1, scale: 1 },
+    exit: { opacity: 0, scale: 0.8 }
   };
 
   return (
@@ -57,9 +66,18 @@ export function CVEducationSection({ education }: CVEducationSectionProps) {
                       <GraduationCap className="w-5 h-5 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                      <button
+                        onClick={() => edu.certificate && setSelectedCertificate(edu.certificate)}
+                        className={`text-lg font-semibold text-gray-900 dark:text-gray-100 text-left ${
+                          edu.certificate ? 'hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer transition-colors' : ''
+                        }`}
+                        disabled={!edu.certificate}
+                      >
                         {edu.degree}
-                      </h3>
+                        {edu.certificate && (
+                          <FileText className="inline w-4 h-4 ml-2 opacity-60" />
+                        )}
+                      </button>
                       <p className="text-sm text-gray-600 dark:text-gray-400">
                         {edu.description}
                       </p>
@@ -86,6 +104,69 @@ export function CVEducationSection({ education }: CVEducationSectionProps) {
           </motion.div>
         ))}
       </div>
+
+      {/* Certificate Modal */}
+      <AnimatePresence>
+        {selectedCertificate && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+            onClick={() => setSelectedCertificate(null)}
+          >
+            <motion.div
+              variants={modalVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="bg-white dark:bg-gray-800 rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Modal Header */}
+              <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                  Degree Certificate
+                </h3>
+                <button
+                  onClick={() => setSelectedCertificate(null)}
+                  className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors"
+                >
+                  <X className="w-5 h-5 text-gray-500 dark:text-gray-400" />
+                </button>
+              </div>
+
+              {/* PDF Viewer */}
+              <div className="h-[70vh] overflow-auto">
+                <iframe
+                  src={selectedCertificate}
+                  className="w-full h-full border-none"
+                  title="Degree Certificate"
+                />
+              </div>
+
+              {/* Modal Footer */}
+              <div className="flex items-center justify-end p-4 border-t border-gray-200 dark:border-gray-700 space-x-3">
+                <a
+                  href={selectedCertificate}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                >
+                  Open in New Tab
+                </a>
+                <a
+                  href={selectedCertificate}
+                  download
+                  className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
+                >
+                  Download
+                </a>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.section>
   );
 } 
