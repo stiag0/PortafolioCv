@@ -103,7 +103,9 @@ export const cvData: CVData = {
     // Databases
     'PostgreSQL', 'MongoDB', 'Firebase', 'MySQL', 'Redis', 'SQLite', 'Supabase', 'PlanetScale',
     // Cloud & Deployment
-    'Vercel', 'AWS', 'Docker', 'Git', 'GitHub', 'Netlify', 'Railway', 'Heroku',
+    'Vercel', 'AWS', 'Azure', 'Docker', 'Kubernetes', 'Git', 'GitHub', 'Netlify', 'Railway', 'Heroku',
+    // Microsoft Stack
+    'Visual Basic', 'VBA', 'Power BI', 'Power Query (DAX)', 'Power Automate', 'Excel Macros',
     // AI & Machine Learning
     'Claude CLI', 'ChatGPT API', 'OpenAI API', 'TensorFlow', 'Prompt Engineering', 'AI Integration',
     // Game Development
@@ -123,12 +125,12 @@ export const cvData: CVData = {
       city: 'Medellín',
       achievements: [
         'Leading full-stack development of e-commerce platform using Python, Node.js, and modern web technologies',
-        'Implementing headless WordPress architecture for centraldebelleza.co with Tailwind CSS on Vercel hybrid deployment',
+        'Implementing headless WordPress architecture with Tailwind CSS on Vercel hybrid deployment',
+        'Utilizing Google Firebase for real-time database, authentication, and cloud functions',
         'Developing custom backend logic and API integrations for enhanced e-commerce functionality',
         'Integrating AI capabilities using Claude CLI, ChatGPT API, and OpenAI API for enhanced user experiences',
         'Implementing AI-powered features including intelligent product recommendations and automated customer support',
-        'Optimizing website performance and user experience through modern development practices',
-        'Collaborating with design and development teams to create scalable, maintainable solutions'
+        'Optimizing website performance and user experience through modern development practices'
       ],
     },
     {
@@ -139,9 +141,10 @@ export const cvData: CVData = {
       city: 'Remote',
       achievements: [
         'Developed and implemented personalized backend logic for Shopify e-commerce platform',
-        'Created custom solutions to enhance online store functionality and user experience',
+        'Implemented GraphQL APIs for efficient data querying and custom Shopify integrations',
+        'Created custom solutions using JavaScript and RESTful APIs to enhance online store functionality',
         'Provided technical consultation and development services as external contractor',
-        'Implemented custom features and integrations to meet specific business requirements'
+        'Built custom features meeting specific e-commerce business requirements'
       ],
     },
     {
@@ -151,11 +154,12 @@ export const cvData: CVData = {
       employer: 'Tigo Colombia',
       city: 'Remote',
       achievements: [
-        'Developed multiple automations on Microsoft environment to resolve delays in operational timeline using Excel macros, Power Query (DAX) and Power Automate to deploy software with dynamic response compared to classic Excel usages',
-        'Mentored team members in development, issues and technical progression',
+        'Developed multiple automations on Microsoft Azure environment to resolve delays in operational timeline',
+        'Implemented solutions using Visual Basic, Excel VBA macros, Power Query (DAX), Power BI, and Power Automate',
+        'Created automated workflows with Power Automate to deploy software with dynamic response',
         'Designed a normalizer to format data-sets as a tool to improve the consumers data ratio and make it more accessible to the operational team',
-        'Reduced operational timeline delays by 60% through automation',
-        'Implemented Power Automate workflows and Excel VBA macros'
+        'Reduced operational timeline delays by 60% through Microsoft automation tools',
+        'Mentored team members in Microsoft technologies and technical progression'
       ],
     },
     {
@@ -195,15 +199,21 @@ export const cvData: CVData = {
   projects: [
     {
       name: 'AI-Powered E-commerce Platform',
-      description: 'Enhanced e-commerce platform with AI integration using Claude CLI, ChatGPT API, and OpenAI API for intelligent features',
-      technologies: ['Python', 'Node.js', 'Claude CLI', 'ChatGPT API', 'OpenAI API', 'TensorFlow', 'Vercel'],
+      description: 'Enhanced e-commerce platform with headless WordPress, Firebase backend, and AI integration using Claude CLI, ChatGPT API, and OpenAI API',
+      technologies: ['Python', 'Node.js', 'WordPress (Headless)', 'Firebase', 'Claude CLI', 'ChatGPT API', 'Vercel', 'Tailwind CSS'],
       link: 'https://centraldebelleza.co'
     },
     {
       name: 'El Mundo de Laura Shopify Integration',
-      description: 'Custom backend logic and personalized solutions for Shopify e-commerce platform',
-      technologies: ['Shopify', 'JavaScript', 'Liquid', 'API Integration'],
+      description: 'Custom backend logic and personalized solutions for Shopify e-commerce platform using GraphQL APIs',
+      technologies: ['Shopify', 'GraphQL', 'JavaScript', 'Liquid', 'Python'],
       link: 'https://elmundodelaura.com'
+    },
+    {
+      name: 'Microsoft Automation Suite - Tigo Colombia',
+      description: 'Automated workflows and data processing tools using Microsoft Azure stack, reducing operational delays by 60%',
+      technologies: ['Azure', 'Visual Basic', 'VBA', 'Power BI', 'Power Query', 'Power Automate'],
+      link: 'https://github.com/stiag0'
     },
     {
       name: 'Godot Engine Projects',
@@ -213,8 +223,8 @@ export const cvData: CVData = {
     },
     {
       name: 'E-commerce Mobile App',
-      description: 'Built with Angular and Firebase, achieved 5,000+ downloads',
-      technologies: ['Angular', 'Firebase', 'TypeScript'],
+      description: 'Built with Angular and Firebase, achieved 5,000+ downloads and $3,000+ revenue',
+      technologies: ['Angular', 'Firebase', 'TypeScript', 'NoSQL'],
       link: 'https://github.com/stiag0'
     }
   ]

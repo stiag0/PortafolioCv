@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santiago Ramon Alvarez Gomez - Senior Frontend Developer - CV for Company-Frontend</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background: #ffffff;
+        }
+
+        .container {
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20mm;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #2563eb;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+
+        .header .job-title {
+            font-size: 18px;
+            color: #2563eb;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 14px;
+            color: #4b5563;
+        }
+
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Professional Summary */
+        .summary {
+            margin-bottom: 30px;
+        }
+
+        .summary p {
+            text-align: justify;
+            font-size: 14px;
+            line-height: 1.7;
+            color: #374151;
+        }
+
+        /* Section Headers */
+        .section {
+            margin-bottom: 28px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1f2937;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 8px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+
+        .skill-item {
+            padding: 6px 12px;
+            background: #f3f4f6;
+            border-radius: 6px;
+            font-size: 13px;
+            text-align: center;
+            color: #374151;
+        }
+
+        /* Employment History */
+        .job {
+            margin-bottom: 20px;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+
+        .job-title-employer {
+            flex: 1;
+        }
+
+        .job-title-employer h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 4px;
+        }
+
+        .job-title-employer .employer {
+            font-size: 14px;
+            color: #2563eb;
+            font-weight: 500;
+        }
+
+        .job-date-location {
+            text-align: right;
+            font-size: 13px;
+            color: #6b7280;
+        }
+
+        .achievements {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .achievements li {
+            padding-left: 20px;
+            margin-bottom: 6px;
+            font-size: 13px;
+            color: #4b5563;
+            position: relative;
+        }
+
+        .achievements li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #2563eb;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* Projects Section */
+        .project {
+            margin-bottom: 18px;
+        }
+
+        .project h3 {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 6px;
+        }
+
+        .project p {
+            font-size: 13px;
+            color: #4b5563;
+            margin-bottom: 6px;
+            line-height: 1.5;
+        }
+
+        .technologies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .tech-tag {
+            padding: 4px 10px;
+            background: #dbeafe;
+            color: #1e40af;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        /* Education Section */
+        .education-item {
+            margin-bottom: 12px;
+        }
+
+        .education-item h3 {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .education-item .degree {
+            font-size: 14px;
+            color: #2563eb;
+            margin: 4px 0;
+        }
+
+        .education-item .date {
+            font-size: 13px;
+            color: #6b7280;
+        }
+
+        /* Languages Section */
+        .languages-list {
+            display: flex;
+            gap: 20px;
+            font-size: 14px;
+        }
+
+        .language-item {
+            padding: 8px 16px;
+            background: #f3f4f6;
+            border-radius: 6px;
+            color: #374151;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            .container {
+                padding: 0;
+                max-width: 100%;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+
+            .job, .project {
+                page-break-inside: avoid;
+            }
+        }
+
+        @page {
+            size: A4;
+            margin: 15mm;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Santiago Ramon Alvarez Gomez</h1>
+            <div class="job-title">Senior Frontend Developer</div>
+            <div class="contact-info">
+                <span>📧 stiago4r@gmail.com</span>
+                <span>📱 +573057668478</span>
+                <span>📍 Medellin, Colombia</span>
+                <span>💼 GitHub: github.com/stiag0</span>
+            </div>
+        </div>
+
+        <!-- Professional Summary -->
+        <div class="summary section">
+            <h2 class="section-title">Professional Summary</h2>
+            <p>Senior Frontend Developer with 4+ years of experience building modern, responsive web applications using React, Angular, Next.js, and TypeScript. Specialized in creating exceptional user experiences with focus on performance optimization, accessibility, and modern UI/UX practices. Strong expertise in component-based architecture, state management, and frontend best practices.</p>
+        </div>
+
+        <!-- Skills -->
+        <div class="section">
+            <h2 class="section-title">Core Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-item">React</div>
+                <div class="skill-item">Angular</div>
+                <div class="skill-item">Next.js</div>
+                <div class="skill-item">Vue.js</div>
+                <div class="skill-item">Svelte</div>
+                <div class="skill-item">TypeScript</div>
+                <div class="skill-item">JavaScript (ES6+)</div>
+                <div class="skill-item">HTML5</div>
+                <div class="skill-item">CSS3</div>
+                <div class="skill-item">Tailwind CSS</div>
+                <div class="skill-item">Redux</div>
+                <div class="skill-item">React Hooks</div>
+                <div class="skill-item">Webpack</div>
+                <div class="skill-item">Vite</div>
+                <div class="skill-item">Responsive Design</div>
+                <div class="skill-item">Mobile-First Design</div>
+                <div class="skill-item">Figma</div>
+                <div class="skill-item">Jest</div>
+                <div class="skill-item">Cypress</div>
+                <div class="skill-item">RESTful APIs</div>
+                <div class="skill-item">GraphQL</div>
+            </div>
+        </div>
+
+        <!-- Employment History -->
+        <div class="section">
+            <h2 class="section-title">Professional Experience</h2>
+            
+            <div class="job">
+                <div class="job-header">
+                    <div class="job-title-employer">
+                        <h3>AI Developer & Full Stack Developer</h3>
+                        <div class="employer">Central de belleza © • Medellín</div>
+                    </div>
+                    <div class="job-date-location">
+                        January 2023 - Present
+                    </div>
+                </div>
+                <ul class="achievements">
+                    <li>Leading frontend development of e-commerce platform using React and Next.js</li>
+                    <li>Implementing responsive, mobile-first designs with Tailwind CSS</li>
+                    <li>Optimizing website performance achieving 90+ Lighthouse scores</li>
+                    <li>Building reusable component libraries for consistent UI/UX across platform</li>
+                    <li>Integrating RESTful APIs and managing application state efficiently</li>
+                </ul>
+            </div>
+            
+            
+            <div class="job">
+                <div class="job-header">
+                    <div class="job-title-employer">
+                        <h3>External Developer</h3>
+                        <div class="employer">El Mundo de Laura • Remote</div>
+                    </div>
+                    <div class="job-date-location">
+                        March 2025 - Present
+                    </div>
+                </div>
+                <ul class="achievements">
+                    <li>Developed custom frontend features for Shopify e-commerce platform</li>
+                    <li>Created responsive, mobile-friendly user interfaces</li>
+                    <li>Optimized frontend performance for improved user experience</li>
+                </ul>
+            </div>
+            
+            
+            <div class="job">
+                <div class="job-header">
+                    <div class="job-title-employer">
+                        <h3>Software Developer</h3>
+                        <div class="employer">Centraldelbarbero.com • Medellín</div>
+                    </div>
+                    <div class="job-date-location">
+                        January 2019 - June 2022
+                    </div>
+                </div>
+                <ul class="achievements">
+                    <li>Led frontend development of mobile app using Angular and TypeScript</li>
+                    <li>Created responsive, intuitive user interfaces achieving 5,000+ downloads</li>
+                    <li>Implemented component-based architecture for maintainable code</li>
+                </ul>
+            </div>
+            
+        </div>
+
+        <!-- Projects -->
+        <div class="section">
+            <h2 class="section-title">Key Projects</h2>
+            
+            <div class="project">
+                <h3>Modern E-commerce Frontend</h3>
+                <p>Responsive e-commerce platform built with React, Next.js, and Tailwind CSS. Achieved 90+ Lighthouse performance score with optimized loading times.</p>
+                <div class="technologies">
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">Next.js</span>
+                    <span class="tech-tag">TypeScript</span>
+                    <span class="tech-tag">Tailwind CSS</span>
+                    <span class="tech-tag">Vercel</span>
+                    <span class="tech-tag">Performance Optimization</span>
+                </div>
+            </div>
+            
+            
+            <div class="project">
+                <h3>Shopify Custom Theme</h3>
+                <p>Custom responsive theme for Shopify platform with focus on user experience and mobile optimization.</p>
+                <div class="technologies">
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Liquid</span>
+                    <span class="tech-tag">HTML5</span>
+                    <span class="tech-tag">CSS3</span>
+                    <span class="tech-tag">Responsive Design</span>
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- Education -->
+        <div class="section">
+            <h2 class="section-title">Education</h2>
+            
+            <div class="education-item">
+                <h3>Universidad EAFIT</h3>
+                <div class="degree">Bachelor in Software Engineering - Software Engineering</div>
+                <div class="date">Graduated: 2024</div>
+            </div>
+            
+        </div>
+
+        <!-- Languages -->
+        <div class="section">
+            <h2 class="section-title">Languages</h2>
+            <div class="languages-list">
+                <div class="language-item">Spanish (Native)</div>
+                <div class="language-item">English (Professional)</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
