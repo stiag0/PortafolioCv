@@ -53,7 +53,7 @@ export const stonegateData: Partial<CVData> = {
       achievements: [
         'Led development of custom backend solutions for Shopify platform',
         'Implemented DevOps best practices and automated deployment processes',
-        'Mentored client's technical team on modern development practices',
+        "Mentored client's technical team on modern development practices",
         'Designed scalable API architecture for third-party integrations'
       ],
     },
