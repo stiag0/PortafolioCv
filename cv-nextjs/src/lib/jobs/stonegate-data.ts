@@ -87,19 +87,19 @@ export const stonegateData: Partial<CVData> = {
   ],
   projects: [
     {
-      name: 'Dockerized E-commerce Platform',
-      description: 'Led development of scalable e-commerce platform with React frontend and Python/Django backend. Implemented Docker containerization and CI/CD pipelines for automated deployment.',
-      technologies: ['React', 'Python', 'Django', 'Docker', 'AWS', 'CI/CD', 'PostgreSQL'],
+      name: 'Central de Belleza E-commerce Platform',
+      description: 'Led development of scalable e-commerce platform with React frontend and Python/Django backend. containerization and CI/CD pipelines for automated deployment.',
+      technologies: ['React', 'Python', 'Django', 'AWS', 'CI/CD', 'PostgreSQL'],
       link: 'https://centraldebelleza.co'
     },
     {
-      name: 'Microservices Backend Architecture',
+      name: 'El Mundo de Laura Microservices Backend Architecture',
       description: 'Designed and implemented microservices architecture for e-commerce platform with emphasis on scalability and maintainability.',
-      technologies: ['Python', 'Flask', 'FastAPI', 'Docker', 'Kubernetes', 'RESTful APIs'],
+      technologies: ['Python', 'Flask', 'FastAPI', 'RESTful APIs', 'GraphQL'],
       link: 'https://elmundodelaura.com'
     },
     {
-      name: 'E-commerce Mobile App',
+      name: 'Centraldelbarbero.com E-commerce Mobile App',
       description: 'Led team in developing mobile application with Angular and Firebase. Mentored developers and established code review processes.',
       technologies: ['Angular', 'Firebase', 'TypeScript', 'CI/CD'],
       link: 'https://github.com/stiag0'
