@@ -57,38 +57,49 @@ export function CVEducationSection({ education }: CVEducationSectionProps) {
             className="relative border-l-2 border-gray-200 dark:border-gray-700 pl-8 pb-8 group"
           >
             <div className="absolute -left-2 w-4 h-4 bg-gray-900 dark:bg-gray-100 rounded-full group-hover:bg-blue-500 dark:group-hover:bg-blue-400 transition-colors"></div>
-            
+
             <div className="space-y-4">
               <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow">
                 <div className="flex items-start justify-between mb-3">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center">
+                  <div className="flex items-start space-x-3 w-full">
+                    <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
                       <GraduationCap className="w-5 h-5 text-white" />
                     </div>
-                    <div>
-                      <button
-                        onClick={() => edu.certificate && setSelectedCertificate(edu.certificate)}
-                        className={`text-lg font-semibold text-gray-900 dark:text-gray-100 text-left ${
-                          edu.certificate ? 'hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer transition-colors' : ''
-                        }`}
-                        disabled={!edu.certificate}
-                      >
-                        {edu.degree}
-                        {edu.certificate && (
-                          <FileText className="inline w-4 h-4 ml-2 opacity-60" />
-                        )}
-                      </button>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
-                        {edu.description}
-                      </p>
+                    <div className="flex justify-between items-start w-full">
+                      <div className="pr-4">
+                        <button
+                          onClick={() => edu.certificate && setSelectedCertificate(edu.certificate)}
+                          className={`text-lg font-semibold text-gray-900 dark:text-gray-100 text-left ${edu.certificate ? 'hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer transition-colors' : ''
+                            }`}
+                          disabled={!edu.certificate}
+                        >
+                          {edu.degree}
+                          {edu.certificate && (
+                            <FileText className="inline w-4 h-4 ml-2 opacity-60" />
+                          )}
+                        </button>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">
+                          {edu.description}
+                        </p>
+                      </div>
+                      {edu.certificateImage && (
+                        <div className="flex-shrink-0 ml-2">
+                          <img
+                            src={edu.certificateImage}
+                            alt="Certificate Preview"
+                            className="w-64 h-auto object-contain rounded-md cursor-pointer hover:opacity-80 transition-opacity border border-gray-200 dark:border-gray-700 shadow-sm"
+                            onClick={() => edu.certificate && setSelectedCertificate(edu.certificate)}
+                          />
+                        </div>
+                      )}
                     </div>
                   </div>
-                  <div className="flex items-center space-x-1 text-sm text-gray-500 dark:text-gray-400">
+                  <div className="flex items-center space-x-1 text-sm text-gray-500 dark:text-gray-400 flex-shrink-0 ml-4">
                     <Calendar className="w-4 h-4" />
                     <span>{edu.graduationDate}</span>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center space-x-2">
                   <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
                     <Award className="w-4 h-4 text-white" />
@@ -169,4 +180,4 @@ export function CVEducationSection({ education }: CVEducationSectionProps) {
       </AnimatePresence>
     </motion.section>
   );
-} 
+}

@@ -17,6 +17,7 @@ export interface Education {
   graduationDate: string;
   description: string;
   certificate?: string; // Optional PDF link
+  certificateImage?: string; // Optional Image preview link
 }
 
 export interface Link {
@@ -77,6 +78,7 @@ export const cvData: CVData = {
       graduationDate: '2024',
       description: 'Software Engineering',
       certificate: '/documents/santiago-degree-certificate.pdf', // Add your PDF here
+      certificateImage: '/degree-thumbnail.jpg', // Updated image path
     },
   ],
   links: [
@@ -90,7 +92,7 @@ export const cvData: CVData = {
     },
     {
       label: 'WhatsApp',
-      link: 'https://wa.me/573057668478',
+      link: 'https://wa.me/573057668478?text=vi%20tu%20cv%20y%20estamos%20interesados',
     },
   ],
   skills: [
@@ -228,4 +230,4 @@ export const cvData: CVData = {
       link: 'https://github.com/stiag0'
     }
   ]
-}; 
+};
