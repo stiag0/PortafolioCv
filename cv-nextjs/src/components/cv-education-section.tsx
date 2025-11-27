@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { GraduationCap, Calendar, MapPin, Award, X, FileText } from 'lucide-react';
+import { GraduationCap, Calendar, X, FileText } from 'lucide-react';
 import { Education } from '@/lib/data';
 
 interface CVEducationSectionProps {
@@ -12,94 +12,86 @@ interface CVEducationSectionProps {
 export function CVEducationSection({ education }: CVEducationSectionProps) {
   const [selectedCertificate, setSelectedCertificate] = useState<string | null>(null);
 
-  const containerVariants = {
-    hidden: { opacity: 0, x: 20 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.6,
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
-  };
-
   const modalVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
+    hidden: { opacity: 0, scale: 0.95 },
     visible: { opacity: 1, scale: 1 },
-    exit: { opacity: 0, scale: 0.8 }
+    exit: { opacity: 0, scale: 0.95 }
   };
 
   return (
-    <motion.section
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      className="space-y-8"
-    >
-      <div className="flex items-center space-x-4">
-        <div className="w-3 h-3 bg-gray-900 dark:bg-gray-100 rounded-full"></div>
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 uppercase tracking-wide">
-          Education
-        </h2>
-      </div>
+    <div className="space-y-12">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="text-center space-y-4"
+      >
+        <h2 className="cv-title">Education</h2>
+        <p className="cv-subtitle">
+          Academic background and certifications.
+        </p>
+      </motion.div>
 
-      <div className="pl-7 space-y-6">
+      <div className="grid grid-cols-1 gap-6 max-w-3xl mx-auto">
         {education.map((edu, index) => (
           <motion.div
             key={index}
-            variants={itemVariants}
-            className="relative border-l-2 border-gray-200 dark:border-gray-700 pl-8 pb-8 group"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            className="bg-gray-50 dark:bg-gray-900 rounded-2xl p-8 hover:shadow-lg transition-shadow border border-gray-100 dark:border-gray-800"
           >
-            <div className="absolute -left-2 w-4 h-4 bg-gray-900 dark:bg-gray-100 rounded-full group-hover:bg-blue-500 dark:group-hover:bg-blue-400 transition-colors"></div>
-            
-            <div className="space-y-4">
-              <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow">
-                <div className="flex items-start justify-between mb-3">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center">
-                      <GraduationCap className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <button
-                        onClick={() => edu.certificate && setSelectedCertificate(edu.certificate)}
-                        className={`text-lg font-semibold text-gray-900 dark:text-gray-100 text-left ${
-                          edu.certificate ? 'hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer transition-colors' : ''
-                        }`}
-                        disabled={!edu.certificate}
-                      >
-                        {edu.degree}
-                        {edu.certificate && (
-                          <FileText className="inline w-4 h-4 ml-2 opacity-60" />
-                        )}
-                      </button>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
-                        {edu.description}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-1 text-sm text-gray-500 dark:text-gray-400">
-                    <Calendar className="w-4 h-4" />
-                    <span>{edu.graduationDate}</span>
-                  </div>
-                </div>
-                
-                <div className="flex items-center space-x-2">
-                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-                    <Award className="w-4 h-4 text-white" />
+            <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
+              <div className="flex-1 space-y-4">
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center text-blue-600 dark:text-blue-400">
+                    <GraduationCap className="w-5 h-5" />
                   </div>
                   <div>
-                    <p className="font-medium text-gray-900 dark:text-gray-100">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">
                       {edu.school}
-                    </p>
+                    </h3>
+                    <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mt-1">
+                      <Calendar className="w-4 h-4 mr-1" />
+                      <span>{edu.graduationDate}</span>
+                    </div>
                   </div>
                 </div>
+
+                <div>
+                  <h4 className="text-lg font-medium text-gray-800 dark:text-gray-200">
+                    {edu.degree}
+                  </h4>
+                  <p className="text-gray-600 dark:text-gray-400 mt-2 leading-relaxed">
+                    {edu.description}
+                  </p>
+                </div>
+
+                {edu.certificate && (
+                  <button
+                    onClick={() => setSelectedCertificate(edu.certificate || null)}
+                    className="inline-flex items-center space-x-2 text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
+                  >
+                    <FileText className="w-4 h-4" />
+                    <span>View Certificate</span>
+                  </button>
+                )}
               </div>
+
+              {edu.certificateImage && (
+                <div
+                  className="w-full md:w-48 flex-shrink-0 cursor-pointer overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700"
+                  onClick={() => edu.certificate && setSelectedCertificate(edu.certificate || null)}
+                >
+                  <img
+                    src={edu.certificateImage}
+                    alt="Certificate Preview"
+                    className="w-full h-auto object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              )}
             </div>
           </motion.div>
         ))}
@@ -112,7 +104,7 @@ export function CVEducationSection({ education }: CVEducationSectionProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4"
             onClick={() => setSelectedCertificate(null)}
           >
             <motion.div
@@ -120,53 +112,50 @@ export function CVEducationSection({ education }: CVEducationSectionProps) {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="bg-white dark:bg-gray-800 rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden"
+              className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Modal Header */}
-              <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-                  Degree Certificate
+              <div className="flex items-center justify-between p-4 border-b border-gray-100 dark:border-gray-700">
+                <h3 className="font-semibold text-gray-900 dark:text-gray-100">
+                  Certificate View
                 </h3>
                 <button
                   onClick={() => setSelectedCertificate(null)}
                   className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors"
                 >
-                  <X className="w-5 h-5 text-gray-500 dark:text-gray-400" />
+                  <X className="w-5 h-5 text-gray-500" />
                 </button>
               </div>
 
-              {/* PDF Viewer */}
-              <div className="h-[70vh] overflow-auto">
+              <div className="flex-1 bg-gray-100 dark:bg-gray-900 overflow-hidden">
                 <iframe
                   src={selectedCertificate}
                   className="w-full h-full border-none"
-                  title="Degree Certificate"
+                  title="Certificate"
                 />
               </div>
 
-              {/* Modal Footer */}
-              <div className="flex items-center justify-end p-4 border-t border-gray-200 dark:border-gray-700 space-x-3">
+              <div className="p-4 border-t border-gray-100 dark:border-gray-700 flex justify-end gap-3">
                 <a
                   href={selectedCertificate}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                  className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
                 >
                   Open in New Tab
                 </a>
                 <a
                   href={selectedCertificate}
                   download
-                  className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
+                  className="px-4 py-2 text-sm font-medium bg-blue-600 text-white hover:bg-blue-700 rounded-lg transition-colors"
                 >
-                  Download
+                  Download PDF
                 </a>
               </div>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.section>
+    </div>
   );
-} 
+}

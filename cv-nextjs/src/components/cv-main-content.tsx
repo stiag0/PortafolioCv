@@ -9,98 +9,72 @@ interface CVMainContentProps {
 }
 
 export function CVMainContent({ data }: CVMainContentProps) {
-  const { personalInfo, employmentHistory } = data;
-
-  const containerVariants = {
-    hidden: { opacity: 0, x: 20 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.6,
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
-  };
+  const { employmentHistory } = data;
 
   return (
-    <motion.main
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      className="space-y-12"
-    >
-      {/* About Me Section */}
-      <motion.section variants={itemVariants} className="space-y-6">
-        <div className="flex items-center space-x-4">
-          <div className="w-3 h-3 bg-gray-900 dark:bg-gray-100 rounded-full"></div>
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 uppercase tracking-wide">
-            About Me
-          </h2>
-        </div>
-        <div className="pl-7">
-          <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-base">
-            {personalInfo.professionalSummary}
-          </p>
-        </div>
-      </motion.section>
+    <div className="space-y-12">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="text-center space-y-4"
+      >
+        <h2 className="cv-title">Experience</h2>
+        <p className="cv-subtitle">
+          My professional journey and key achievements.
+        </p>
+      </motion.div>
 
-      {/* Employment History */}
-      <motion.section variants={itemVariants} className="space-y-8">
-        <div className="flex items-center space-x-4">
-          <div className="w-3 h-3 bg-gray-900 dark:bg-gray-100 rounded-full"></div>
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 uppercase tracking-wide">
-            Experience
-          </h2>
-        </div>
-        <div className="pl-7 space-y-8">
-          {employmentHistory.map((job, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              className="relative border-l-2 border-gray-200 dark:border-gray-700 pl-8"
-            >
-              <div className="absolute -left-2 w-4 h-4 bg-gray-900 dark:bg-gray-100 rounded-full"></div>
-              <div className="space-y-4">
-                <div className="space-y-2">
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 uppercase">
-                    {job.jobTitle}
-                  </h3>
-                  <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
-                    <div className="flex items-center space-x-1">
-                      <Briefcase className="w-4 h-4" />
-                      <span className="font-medium">{job.employer}</span>
-                    </div>
-                    <div className="flex items-center space-x-1">
-                      <Calendar className="w-4 h-4" />
-                      <span>{job.startDate} - {job.endDate}</span>
-                    </div>
-                    <div className="flex items-center space-x-1">
-                      <MapPin className="w-4 h-4" />
-                      <span>{job.city}</span>
-                    </div>
-                  </div>
+      <div className="space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-gray-200 before:to-transparent dark:before:via-gray-700">
+        {employmentHistory.map((job, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group"
+          >
+            {/* Timeline Dot */}
+            <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white dark:border-gray-900 bg-gray-200 dark:bg-gray-700 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+              <Briefcase className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+            </div>
+
+            {/* Content Card */}
+            <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-md transition-shadow">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4">
+                <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100">
+                  {job.jobTitle}
+                </h3>
+                <span className="text-sm font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 px-3 py-1 rounded-full mt-2 sm:mt-0 w-fit">
+                  {job.startDate} - {job.endDate}
+                </span>
+              </div>
+
+              <div className="mb-4 flex items-center space-x-4 text-sm text-gray-600 dark:text-gray-400">
+                <div className="flex items-center space-x-1">
+                  <Briefcase className="w-4 h-4" />
+                  <span>{job.employer}</span>
                 </div>
-                <div className="space-y-2">
-                  {job.achievements.map((achievement, achievementIndex) => (
-                    <div key={achievementIndex} className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-gray-500 dark:bg-gray-400 rounded-full mt-2 flex-shrink-0"></div>
-                      <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
-                        {achievement}
-                      </p>
-                    </div>
-                  ))}
+                <div className="flex items-center space-x-1">
+                  <MapPin className="w-4 h-4" />
+                  <span>{job.city}</span>
                 </div>
               </div>
-            </motion.div>
-          ))}
-        </div>
-      </motion.section>
-    </motion.main>
+
+              <ul className="space-y-2">
+                {job.achievements.map((achievement, i) => (
+                  <li key={i} className="flex items-start space-x-2 text-gray-700 dark:text-gray-300 text-sm">
+                    <span className="mt-1.5 w-1.5 h-1.5 bg-blue-500 rounded-full shrink-0" />
+                    <span>{achievement}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </div>
   );
-} 
+}
