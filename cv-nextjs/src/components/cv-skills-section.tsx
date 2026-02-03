@@ -7,11 +7,7 @@ interface Skill {
   category: 'frontend' | 'backend' | 'database' | 'tools' | 'ai';
 }
 
-interface CVSkillsSectionProps {
-  skills: string[];
-}
-
-export function CVSkillsSection({ skills }: CVSkillsSectionProps) {
+export function CVSkillsSection() {
   // Simplified categories for cleaner look
   const categorizedSkills: Skill[] = [
     { name: 'React', category: 'frontend' },
@@ -26,77 +22,46 @@ export function CVSkillsSection({ skills }: CVSkillsSectionProps) {
     { name: 'Docker', category: 'tools' },
     { name: 'Git', category: 'tools' },
     { name: 'OpenAI API', category: 'ai' },
+    { name: 'LangChain', category: 'ai' },
   ];
-
-  const categories = [
-    { id: 'frontend', label: 'Frontend' },
-    { id: 'backend', label: 'Backend' },
-    { id: 'database', label: 'Database' },
-    { id: 'tools', label: 'DevOps & Tools' },
-    { id: 'ai', label: 'AI Integration' },
-  ];
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
-  };
 
   return (
-    <div className="space-y-12">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="text-center space-y-4"
-      >
-        <h2 className="cv-title">Technical Proficiency</h2>
-        <p className="cv-subtitle">
-          A comprehensive overview of my technical skills and tools.
-        </p>
-      </motion.div>
+    <motion.section
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.6 }}
+      className="space-y-8"
+    >
+      <div className="flex items-center space-x-4">
+        <div className="w-3 h-3 bg-gray-900 dark:bg-gray-100 rounded-full"></div>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 uppercase tracking-wide">
+          Skills
+        </h2>
+      </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {categories.map((category, idx) => {
-          const categorySkills = categorizedSkills.filter(s => s.category === category.id);
-          if (categorySkills.length === 0) return null;
-
-          return (
-            <motion.div
-              key={category.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="bg-gray-50 dark:bg-gray-900 rounded-2xl p-6 hover:shadow-lg transition-shadow"
-            >
-              <h3 className="text-xl font-semibold mb-6 text-gray-900 dark:text-gray-100">
-                {category.label}
-              </h3>
-              <div className="flex flex-wrap gap-3">
-                {categorySkills.map((skill) => (
-                  <span
+      <div className="pl-7 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {(['frontend', 'backend', 'database', 'tools', 'ai'] as const).map((category) => (
+          <div key={category} className="space-y-4">
+            <h3 className="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+              {category}
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {categorizedSkills
+                .filter((s) => s.category === category)
+                .map((skill) => (
+                  <motion.span
                     key={skill.name}
-                    className="px-3 py-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm text-gray-700 dark:text-gray-300"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="px-3 py-1 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium border border-gray-200 dark:border-gray-700 shadow-sm"
                   >
                     {skill.name}
-                  </span>
+                  </motion.span>
                 ))}
-              </div>
-            </motion.div>
-          );
-        })}
+            </div>
+          </div>
+        ))}
       </div>
-    </div>
+    </motion.section>
   );
 }

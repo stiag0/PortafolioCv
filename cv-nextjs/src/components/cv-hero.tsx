@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Download, Mail, MapPin } from 'lucide-react';
+import { MapPin, Download } from 'lucide-react';
 import { PersonalInfo } from '@/lib/data';
 
 interface CVHeroProps {

@@ -1,7 +1,6 @@
 'use client';
 
 import { cvData } from '@/lib/data';
-import { motion } from 'framer-motion';
 
 export function PrintLayout() {
   return (
@@ -145,7 +144,7 @@ export function PrintLayout() {
                     <p className="text-sm text-gray-700 mb-2">{project.description}</p>
                     <div className="flex flex-wrap gap-1">
                       {project.technologies.map((tech, techIndex) => (
-                        <span 
+                        <span
                           key={techIndex}
                           className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded"
                         >
