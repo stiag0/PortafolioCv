@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import { GraduationCap, Calendar, X, FileText } from 'lucide-react';
 import { Education } from '@/lib/data';
 
@@ -82,13 +83,14 @@ export function CVEducationSection({ education }: CVEducationSectionProps) {
 
               {edu.certificateImage && (
                 <div
-                  className="w-full md:w-48 flex-shrink-0 cursor-pointer overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700"
+                  className="w-full md:w-48 flex-shrink-0 cursor-pointer overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700 relative h-32"
                   onClick={() => edu.certificate && setSelectedCertificate(edu.certificate || null)}
                 >
-                  <img
+                  <Image
                     src={edu.certificateImage}
                     alt="Certificate Preview"
-                    className="w-full h-auto object-cover hover:scale-105 transition-transform duration-300"
+                    fill
+                    className="object-cover hover:scale-105 transition-transform duration-300"
                   />
                 </div>
               )}

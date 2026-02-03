@@ -40,7 +40,7 @@ export function CVContactSection({ personalInfo }: CVContactSectionProps) {
       >
         <h2 className="cv-title">Get in Touch</h2>
         <p className="cv-subtitle">
-          Let's discuss how we can work together.
+          Let&apos;s discuss how we can work together.
         </p>
       </motion.div>
 

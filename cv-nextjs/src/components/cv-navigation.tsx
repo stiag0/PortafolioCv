@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { User, Briefcase, Award, Mail, Home, GraduationCap, Languages } from 'lucide-react';
 
@@ -26,16 +25,15 @@ export function CVNavigation({ activeSection, onSectionChange }: CVNavigationPro
         {sections.map((section) => {
           const Icon = section.icon;
           const isActive = activeSection === section.id;
-          
+
           return (
             <button
               key={section.id}
               onClick={() => onSectionChange(section.id)}
-              className={`flex flex-col items-center py-3 px-3 transition-colors whitespace-nowrap ${
-                isActive 
-                  ? 'text-blue-600 dark:text-blue-400' 
-                  : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'
-              }`}
+              className={`flex flex-col items-center py-3 px-3 transition-colors whitespace-nowrap ${isActive
+                ? 'text-blue-600 dark:text-blue-400'
+                : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'
+                }`}
             >
               <Icon className="w-5 h-5 mb-1" />
               <span className="text-xs font-medium">{section.label}</span>

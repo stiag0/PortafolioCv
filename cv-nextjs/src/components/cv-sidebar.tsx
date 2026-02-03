@@ -1,14 +1,15 @@
 'use client';
 
 import { useState } from 'react';
-import { 
-  User, 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Globe, 
-  Github, 
-  Linkedin, 
+import Image from 'next/image'; // Added Image import
+import {
+  User,
+  Mail,
+  Phone,
+  MapPin,
+  Globe,
+  Github,
+  Linkedin,
   Download,
   Moon,
   Sun,
@@ -48,7 +49,7 @@ export default function CVSidebar({ cvData, isDarkMode, onToggleTheme, onPrint }
     'Svelte': 75,
     'HTML5': 85,
     'CSS3': 85,
-    
+
     // Backend
     'Python': 90,
     'Node.js': 85,
@@ -57,7 +58,7 @@ export default function CVSidebar({ cvData, isDarkMode, onToggleTheme, onPrint }
     'FastAPI': 80,
     'GraphQL': 75,
     'RESTful APIs': 90,
-    
+
     // Database
     'PostgreSQL': 85,
     'MongoDB': 80,
@@ -67,14 +68,14 @@ export default function CVSidebar({ cvData, isDarkMode, onToggleTheme, onPrint }
     'Redis': 60,
     'Supabase': 55,
     'PlanetScale': 50,
-    
+
     // E-commerce & CMS
     'WordPress (Headless)': 85,
     'Shopify': 80,
     'WooCommerce': 75,
     'Strapi': 55,
     'Sanity': 50,
-    
+
     // Cloud & Deployment
     'Vercel': 90,
     'AWS': 80,
@@ -84,7 +85,7 @@ export default function CVSidebar({ cvData, isDarkMode, onToggleTheme, onPrint }
     'Netlify': 60,
     'Railway': 55,
     'Heroku': 70,
-    
+
     // AI & Machine Learning
     'Claude CLI': 85,
     'ChatGPT API': 80,
@@ -92,7 +93,7 @@ export default function CVSidebar({ cvData, isDarkMode, onToggleTheme, onPrint }
     'TensorFlow': 75,
     'Prompt Engineering': 85,
     'AI Integration': 80,
-    
+
     // Testing & Tools
     'Jest': 75,
     'Cypress': 70,
@@ -100,14 +101,14 @@ export default function CVSidebar({ cvData, isDarkMode, onToggleTheme, onPrint }
     'Insomnia': 55,
     'Figma': 80,
     'Adobe XD': 70,
-    
+
     // Game Development
     'Godot Engine': 80,
     'GDScript': 75,
     'Unity': 70,
     'C#': 75,
     'Blender': 65,
-    
+
     // Other
     'Agile/Scrum': 85,
     'JIRA': 80,
@@ -147,17 +148,21 @@ export default function CVSidebar({ cvData, isDarkMode, onToggleTheme, onPrint }
             <div className="absolute inset-2 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-full animate-pulse"></div>
             <div className="absolute inset-4 bg-gradient-to-br from-gray-800 to-gray-900 rounded-full flex items-center justify-center">
               {cvData.personalInfo.photo ? (
-                <img 
-                  src={cvData.personalInfo.photo} 
-                  alt="Profile" 
-                  className="w-full h-full rounded-full object-cover"
-                />
+                <div className="relative w-full h-full">
+                  <Image
+                    src={cvData.personalInfo.photo}
+                    alt={`${cvData.personalInfo.firstName} ${cvData.personalInfo.lastName}`}
+                    fill
+                    className="rounded-full object-cover"
+                    priority
+                  />
+                </div>
               ) : (
                 <User className="w-16 h-16 text-white" />
               )}
             </div>
           </div>
-          
+
           <div className="space-y-2">
             <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-red-400 bg-clip-text text-transparent">
               {cvData.personalInfo.firstName} {cvData.personalInfo.lastName}
@@ -173,9 +178,9 @@ export default function CVSidebar({ cvData, isDarkMode, onToggleTheme, onPrint }
           <h3 className="text-lg font-semibold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
             Contact
           </h3>
-          
+
           <div className="space-y-3">
-            <div 
+            <div
               className="group flex items-center space-x-3 p-3 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105"
               onMouseEnter={() => setIsHovered('email')}
               onMouseLeave={() => setIsHovered(null)}
@@ -187,8 +192,8 @@ export default function CVSidebar({ cvData, isDarkMode, onToggleTheme, onPrint }
                 {cvData.personalInfo.email}
               </span>
             </div>
-            
-            <div 
+
+            <div
               className="group flex items-center space-x-3 p-3 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105"
               onMouseEnter={() => setIsHovered('phone')}
               onMouseLeave={() => setIsHovered(null)}
@@ -200,8 +205,8 @@ export default function CVSidebar({ cvData, isDarkMode, onToggleTheme, onPrint }
                 {cvData.personalInfo.phone}
               </span>
             </div>
-            
-            <div 
+
+            <div
               className="group flex items-center space-x-3 p-3 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105"
               onMouseEnter={() => setIsHovered('location')}
               onMouseLeave={() => setIsHovered(null)}
@@ -223,7 +228,7 @@ export default function CVSidebar({ cvData, isDarkMode, onToggleTheme, onPrint }
           </h3>
           <div className="space-y-3 max-h-64 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800">
             {getTopSkills().map((skill, index) => (
-              <div 
+              <div
                 key={index}
                 className="group p-3 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105"
                 onMouseEnter={() => setIsHovered(`skill-${index}`)}
@@ -236,7 +241,7 @@ export default function CVSidebar({ cvData, isDarkMode, onToggleTheme, onPrint }
                   <div className={`w-2 h-2 rounded-full ${isHovered === `skill-${index}` ? 'bg-gradient-to-r from-yellow-400 to-orange-400 animate-pulse' : 'bg-gradient-to-r from-yellow-400/50 to-orange-400/50'}`}></div>
                 </div>
                 <div className="w-full bg-gray-700/30 rounded-full h-2">
-                  <div 
+                  <div
                     className="h-2 rounded-full bg-gradient-to-r from-yellow-400 to-orange-400 transition-all duration-1000"
                     style={{ width: `${skill.level}%` }}
                   ></div>
@@ -253,7 +258,7 @@ export default function CVSidebar({ cvData, isDarkMode, onToggleTheme, onPrint }
           </h3>
           <div className="space-y-3">
             {cvData.education.map((edu, index) => (
-              <div 
+              <div
                 key={index}
                 className="group p-3 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105"
                 onMouseEnter={() => setIsHovered(`education-${index}`)}
@@ -285,7 +290,7 @@ export default function CVSidebar({ cvData, isDarkMode, onToggleTheme, onPrint }
           </h3>
           <div className="space-y-3">
             {cvData.languages.map((language, index) => (
-              <div 
+              <div
                 key={index}
                 className="group flex items-center space-x-3 p-3 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105"
                 onMouseEnter={() => setIsHovered(`language-${index}`)}
@@ -346,7 +351,7 @@ export default function CVSidebar({ cvData, isDarkMode, onToggleTheme, onPrint }
               Download PDF
             </span>
           </button>
-          
+
           <button
             onClick={onToggleTheme}
             className="w-full group flex items-center justify-center space-x-2 p-3 rounded-xl bg-gradient-to-r from-blue-500/20 to-cyan-500/20 backdrop-blur-sm border border-blue-500/30 hover:from-blue-500/40 hover:to-cyan-500/40 transition-all duration-300 hover:scale-105"

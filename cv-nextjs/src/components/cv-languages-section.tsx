@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Languages, Globe, Star } from 'lucide-react';
+import { Languages, Star } from 'lucide-react';
 
 interface CVLanguagesSectionProps {
   languages: string[];
@@ -78,16 +78,15 @@ export function CVLanguagesSection({ languages }: CVLanguagesSectionProps) {
                   {[...Array(5)].map((_, i) => (
                     <Star
                       key={i}
-                      className={`w-4 h-4 ${
-                        i < Math.floor(language.proficiency / 20)
+                      className={`w-4 h-4 ${i < Math.floor(language.proficiency / 20)
                           ? 'text-yellow-400 fill-current'
                           : 'text-gray-300 dark:text-gray-600'
-                      }`}
+                        }`}
                     />
                   ))}
                 </div>
               </div>
-              
+
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-600 dark:text-gray-400">Proficiency</span>
