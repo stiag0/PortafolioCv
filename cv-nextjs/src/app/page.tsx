@@ -43,12 +43,14 @@ export default function Home() {
       <CVHeader activeSection={activeSection} />
 
       <main className="pt-0">
-        <section id="hero" className="min-h-screen flex items-center justify-center">
+        <section id="hero" className="min-h-screen flex items-center justify-center scroll-mt-24">
           <IDEHero personalInfo={cvData.personalInfo} />
         </section>
 
         {/* Technical Proficiency Section */}
-        <TechnicalProficiency />
+        <section id="skills" className="scroll-mt-24">
+          <TechnicalProficiency />
+        </section>
 
         <div className="cv-container space-y-24 pb-24">
           <section id="experience" className="scroll-mt-24">

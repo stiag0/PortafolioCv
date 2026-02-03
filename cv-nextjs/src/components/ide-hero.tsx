@@ -12,7 +12,7 @@ interface IDEHeroProps {
 
 export function IDEHero({ personalInfo }: IDEHeroProps) {
     return (
-        <div className="w-full min-h-screen flex items-center justify-center px-6 py-16 bg-[#0a0a0a]">
+        <div className="w-full min-h-screen flex items-center justify-center px-6 py-16 bg-gray-50 dark:bg-[#0a0a0a]">
             <div className="w-full max-w-7xl">
                 <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
@@ -29,7 +29,7 @@ export function IDEHero({ personalInfo }: IDEHeroProps) {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.8, delay: 0.2 }}
-                                    className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-3 leading-tight"
+                                    className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-3 leading-tight"
                                     style={{ fontFamily: 'Space Grotesk, sans-serif' }}
                                 >
                                     {personalInfo.firstName}
@@ -53,7 +53,7 @@ export function IDEHero({ personalInfo }: IDEHeroProps) {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 0.8, delay: 0.6 }}
-                                className="text-gray-400 text-base md:text-lg leading-relaxed max-w-xl"
+                                className="text-gray-600 dark:text-gray-400 text-base md:text-lg leading-relaxed max-w-xl"
                                 style={{ fontFamily: 'Inter, sans-serif' }}
                             >
                                 {personalInfo.professionalSummary && personalInfo.professionalSummary.substring(0, 280)}...

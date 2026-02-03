@@ -112,7 +112,7 @@ export function CVEducationSection({ education }: CVEducationSectionProps) {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col"
+              className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-3xl w-full h-[80vh] overflow-hidden flex flex-col"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-center justify-between p-4 border-b border-gray-100 dark:border-gray-700">

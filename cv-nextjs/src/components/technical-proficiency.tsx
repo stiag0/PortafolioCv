@@ -72,7 +72,7 @@ export function TechnicalProficiency() {
     const activeCategoryData = skillCategories.find((cat) => cat.id === activeCategory);
 
     return (
-        <section className="w-full py-20 md:py-32 bg-[#0a0a0a]">
+        <section className="w-full py-20 md:py-32 bg-white dark:bg-[#0a0a0a]">
             <div className="w-full max-w-7xl mx-auto px-6">
                 {/* Section Header */}
                 <motion.div
@@ -82,7 +82,7 @@ export function TechnicalProficiency() {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-4" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                         Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Proficiency</span>
                     </h2>
                     <p className="text-gray-400 text-lg max-w-2xl mx-auto" style={{ fontFamily: 'Inter, sans-serif' }}>
@@ -133,7 +133,7 @@ export function TechnicalProficiency() {
                                     className="group relative"
                                 >
                                     <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                                    <div className="relative bg-gray-900/50 border border-gray-800 rounded-xl p-6 hover:border-cyan-500/50 transition-all duration-300 backdrop-blur-sm">
+                                    <div className="relative bg-white dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 rounded-xl p-6 hover:border-cyan-500/50 transition-all duration-300 backdrop-blur-sm">
                                         <div className="flex items-start justify-between mb-3">
                                             <h3 className="text-lg font-semibold text-white" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                                                 {skill.name}
