@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Download, Mail, Phone, Sparkles, MapPin } from 'lucide-react';
+import { Download, Mail, MapPin } from 'lucide-react';
 import { PersonalInfo } from '@/lib/data';
 
 interface CVHeroProps {
@@ -10,167 +10,54 @@ interface CVHeroProps {
 
 export function CVHero({ personalInfo }: CVHeroProps) {
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      className="relative py-12 lg:py-16 overflow-hidden"
-    >
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-blue-900/10 dark:via-purple-900/10 dark:to-pink-900/10 opacity-50"></div>
-      
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
+    <div className="relative py-20 lg:py-32 overflow-hidden">
+      <div className="max-w-4xl mx-auto px-6 text-center">
         <motion.div
-          animate={{ 
-            rotate: 360,
-            scale: [1, 1.1, 1],
-          }}
-          transition={{ 
-            duration: 20, 
-            repeat: Infinity, 
-            ease: "linear" 
-          }}
-          className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full blur-xl"
-        />
-        <motion.div
-          animate={{ 
-            rotate: -360,
-            scale: [1, 1.2, 1],
-          }}
-          transition={{ 
-            duration: 25, 
-            repeat: Infinity, 
-            ease: "linear" 
-          }}
-          className="absolute -bottom-20 -left-20 w-48 h-48 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-full blur-xl"
-        />
-      </div>
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="space-y-6"
+        >
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-gray-900 dark:text-white">
+            {personalInfo.firstName} {personalInfo.lastName}
+          </h1>
 
-      <div className="relative z-10 max-w-4xl mx-auto px-4">
-        <div className="text-center space-y-8">
-          {/* Status Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="inline-flex items-center space-x-2 px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-full text-sm font-medium border border-green-200 dark:border-green-800"
-          >
-            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-            <span>Available for new opportunities</span>
-          </motion.div>
+          <h2 className="text-2xl md:text-3xl text-gray-600 dark:text-gray-400 font-medium">
+            {personalInfo.jobTitle}
+          </h2>
 
-          {/* Main Title */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="space-y-4"
-          >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              <span className="text-gray-900 dark:text-white">
-                Hi, I'm{' '}
-              </span>
-              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                {personalInfo.firstName}
-              </span>
-              <br />
-              <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 bg-clip-text text-transparent">
-                {personalInfo.lastName}
-              </span>
-            </h1>
-            
-            <h2 className="text-xl md:text-2xl lg:text-3xl text-gray-600 dark:text-gray-300 font-medium">
-              {personalInfo.jobTitle}
-            </h2>
-          </motion.div>
-
-          {/* Location */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex items-center justify-center space-x-2 text-gray-600 dark:text-gray-400"
-          >
+          <div className="flex items-center justify-center space-x-2 text-gray-500 dark:text-gray-400">
             <MapPin className="w-5 h-5" />
-            <span className="text-lg">
-              {personalInfo.city}, {personalInfo.country}
-            </span>
-          </motion.div>
+            <span>{personalInfo.city}, {personalInfo.country}</span>
+          </div>
 
-          {/* Professional Summary */}
+          <p className="max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+            {personalInfo.professionalSummary}
+          </p>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="max-w-3xl mx-auto"
-          >
-            <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-              {personalInfo.professionalSummary}
-            </p>
-          </motion.div>
-
-          {/* Action Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.0 }}
-            className="flex flex-wrap justify-center gap-4 print:hidden"
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="flex flex-wrap justify-center gap-4 pt-8"
           >
             <a
               href={`mailto:${personalInfo.email}`}
-              className="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              className="px-8 py-3 bg-black dark:bg-white text-white dark:text-black rounded-full font-medium hover:opacity-90 transition-opacity"
             >
-              <Mail className="w-5 h-5" />
-              <span>Get in Touch</span>
+              Get in Touch
             </a>
-            
-            <a
-              href={`tel:${personalInfo.phone}`}
-              className="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-            >
-              <Phone className="w-5 h-5" />
-              <span>Call Me</span>
-            </a>
-            
+
             <button
               onClick={() => window.print()}
-              className="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-pink-600 to-red-600 text-white rounded-lg hover:from-pink-700 hover:to-red-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              className="px-8 py-3 border border-gray-200 dark:border-gray-700 rounded-full font-medium hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors flex items-center space-x-2"
             >
-              <Download className="w-5 h-5" />
+              <Download className="w-4 h-4" />
               <span>Download CV</span>
             </button>
           </motion.div>
-
-          {/* Stats Cards */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto"
-          >
-            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-              <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">4+</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Years</div>
-            </div>
-            
-            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-              <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">50+</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Skills</div>
-            </div>
-            
-            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-              <div className="text-2xl font-bold text-pink-600 dark:text-pink-400">4</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Projects</div>
-            </div>
-            
-            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-              <div className="text-2xl font-bold text-red-600 dark:text-red-400">2</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Languages</div>
-            </div>
-          </motion.div>
-        </div>
+        </motion.div>
       </div>
-    </motion.section>
+    </div>
   );
-} 
+}
