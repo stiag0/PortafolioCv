@@ -13,8 +13,8 @@ interface IDEHeroProps {
 export function IDEHero({ personalInfo }: IDEHeroProps) {
     return (
         <div className="w-full min-h-screen flex items-center justify-center px-6 py-16 bg-gray-50 dark:bg-[#0a0a0a]">
-            <div className="w-full max-w-7xl">
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div className="w-full max-w-[1400px]">
+                <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
                     {/* Personal Info - Left Side */}
                     {personalInfo && (
@@ -22,7 +22,7 @@ export function IDEHero({ personalInfo }: IDEHeroProps) {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, ease: "easeOut" }}
-                            className="space-y-6"
+                            className="lg:col-span-5 space-y-6"
                         >
                             <div>
                                 <motion.h1
@@ -100,7 +100,7 @@ export function IDEHero({ personalInfo }: IDEHeroProps) {
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-                        className="relative"
+                        className="lg:col-span-7 relative"
                     >
                         <div className="rounded-xl overflow-hidden shadow-2xl border border-gray-800/50 bg-[#1e1e1e]">
                             {/* Window Title Bar */}
